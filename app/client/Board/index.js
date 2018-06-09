@@ -11,9 +11,16 @@ class Board extends Component {
   }
 
   componentDidMount() {
-    getGameData().then((response) => {
-      this.setState({ ...response });
-    });
+    const gameData = localStorage.getItem('gameData');
+
+    if (!this.state.gameOver && gameData) { // fetch from localStorage
+      this.setState({ ...JSON.parse(gameData) });
+    } else {
+      getGameData().then((response) => {
+        localStorage.setItem('gameData', JSON.stringify(response));
+        this.setState({ ...response });
+      });
+    }
   }
 
   handleClick = (event) => {
@@ -21,7 +28,13 @@ class Board extends Component {
 
     const { id } = event.target;
     revealCell(id).then((response) => {
-      this.setState({ ...response });
+      localStorage.setItem('gameData', JSON.stringify(response));
+
+      this.setState({ ...response }, () => {
+        if (this.state.gameOver) {
+          localStorage.removeItem('gameData');
+        }
+      });
     });
   }
 
