@@ -9,22 +9,32 @@ app.use(express.static('public'));
 
 const board = new Board();
 
-app.get('/', (req, res) => {
-  res.render('home/index', {
+const returnGameData = (res) => {
+  const data = {
     cells: board.cells,
     gameOver: board.gameOver,
     score: board.unopenedCells,
-  });
+  };
+  res.send(JSON.stringify(data));
+};
+
+app.get('/', (req, res) => {
+  res.render('home/index');
 });
 
-app.put('/:id', (req, res) => {
-  const { id } = req.params;
-  const diamondFound = board.findCell(id).reveal();
+app.get('/game_data', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  returnGameData(res);
+});
 
-  if (diamondFound) {
-    board.revealDiamond();
+app.put('/cell/:id', (req, res) => {
+  const { id } = req.params;
+
+  if (!board.gameOver) {
+    board.revealDiamond(id);
   }
-  res.redirect('/');
+
+  returnGameData(res);
 });
 
 app.listen(3000, () => {

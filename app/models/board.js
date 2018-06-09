@@ -26,15 +26,19 @@ class Board {
     return this.cells[xIndex][yIndex];
   }
 
-  revealDiamond() {
-    this.revealedDiamonds += 1;
+  revealDiamond(id) {
+    const diamondFound = this._findCell(id).reveal();
+
+    if (diamondFound) {
+      this.revealedDiamonds += 1;
+    }
 
     if (this.revealedDiamonds === 8) {
       this.gameOver = true;
     }
   }
 
-  findCell(id) {
+  _findCell(id) {
     const xIndex = parseInt(id / 8, 10);
     const yIndex = id % 8;
 

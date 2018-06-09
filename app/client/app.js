@@ -1,9 +1,15 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import Board from './Board';
+
+const App = () => (<Board />);
+
 global.startApp = (container) => {
   console.log('Here is the container:', container); /* eslint-disable-line no-console */
-};
 
-global.handleCellClick = function(id) {
-  debugger;
-  // window.location.pathname += id;
-  // load(`./${id}`);
-}
+  ReactDOM.render(
+    <App />,
+    container
+  );
+};
