@@ -1,0 +1,116 @@
+<html>
+  <head>
+    <title>Quintype App</title>
+    <link rel="stylesheet" href="/assets/style.css" type="text/css"/>
+    <script type="text/javascript" src="/assets/app.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div>
+        <div class="messages">
+          <% if(gameOver) { %>
+          <h3>Game Over!</h3>
+          <p class="messages-score">
+            Your score is: <%= score %>
+          </p>
+          <% } %>
+        </div>
+        <table class="diamondsweeper-board">
+          <tbody>
+            <% cells.forEach(function(innerCells){ %>
+              <tr>
+                <% innerCells.forEach(function(cell){ %>
+                <td><div onclick="handleCellClick('<%- cell.id %>')" class="cell <%= cell.image %>"></div></td>
+                <% }); %>
+              </tr>
+            <% }); %>
+          </tbody>
+
+          <!-- <tbody> -->
+          <!--   <tr> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell diamond"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--   </tr> -->
+          <!--   <tr> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--   </tr> -->
+          <!--   <tr> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell diamond"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--   </tr> -->
+          <!--   <tr> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--   </tr> -->
+          <!--   <tr> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell diamond"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell arrow"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--   </tr> -->
+          <!--   <tr> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--   </tr> -->
+          <!--   <tr> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell diamond"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--   </tr> -->
+          <!--   <tr> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell unknown"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--     <td><div class="cell"></div></td> -->
+          <!--   </tr> -->
+          <!-- </tbody> -->
+        </table>
+      </div>
+    </div>
+    <script type="text/javascript">startApp(document.getElementById("container"));</script>
+  </body>
+</html>
