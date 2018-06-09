@@ -29,8 +29,20 @@
     background-image: url(diamond.png);
   }
 
-  &.arrow {
-    background-image: url(arrow.png);
+  &.arrow-left {
+    background-image: url(arrow-left.png);
+  }
+
+  &.arrow-right {
+    background-image: url(arrow-right.png);
+  }
+
+  &.arrow-up {
+    background-image: url(arrow-up.png);
+  }
+
+  &.arrow-down {
+    background-image: url(arrow-down.png);
   }
 
   &.unknown {
